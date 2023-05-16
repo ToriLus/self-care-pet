@@ -1,10 +1,11 @@
+"use client";
 import Image from "next/image";
-import useState from "react";
+import { useState } from "react";
 
 export default function PetImage() {
-  function imageClick() {}
-
-  const [effect, setEffect] = useState(false);
+  function imageClick() {
+    console.log("hehe");
+  }
 
   return (
     <Image
@@ -12,13 +13,7 @@ export default function PetImage() {
       width={250}
       height={250}
       alt="pic"
-      className={`${
-        effect && "animate-wiggle"
-      } bg-blue-500 p-4 text-white rounded hover:bg-blue-700 hover:shadow-xl`}
-      onClick={() => {
-        setEffect(true);
-      }}
-      onAnimationEnd={() => setEffect(false)}
+      onClick={imageClick}
     />
   );
 }
