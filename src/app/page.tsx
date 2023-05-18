@@ -12,8 +12,8 @@ export default function Home() {
         </div>
         <Background />
         <PetImage />
-        <Button text={"drink"} />
-        <Button text={"eat"} />
+        <Button text={"drink"} actionImage={"water"} />
+        <Button text={"eat"} actionImage={"food"} />
       </div>
 
       <div className={styles.center}></div>
