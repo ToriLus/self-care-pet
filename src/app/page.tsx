@@ -12,7 +12,7 @@ export default function Home() {
           <h2>Gible says be brave</h2>
         </div>
         <Background />
-        <Stats />
+        <Stats text={"this is text"} alien={"alien tesdt"} />
         <PetImage />
         <Button text={"drink"} actionImage={"water"} />
         <Button text={"eat"} actionImage={"food"} />
