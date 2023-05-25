@@ -3,18 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import styled, { keyframes, css } from "styled-components";
 
 export default function Stats(text, alien) {
-  // const canvasRef = useRef(null);
-
-  // useEffect(() => {
-  //   const canvas = canvasRef.current;
-  //   const ctx = canvas.getContext("2d");
-
-  //   ctx.fillStyle = "red";
-  //   ctx.fillRect(0, 25, 250, 20);
-
-  //   ctx.fillStyle = "blue";
-  //   ctx.fillRect(0, 50, 100, 20);
-  // }, []);
   const date = new Date();
   const year = date.getFullYear();
   const month = date.getMonth();
@@ -36,12 +24,6 @@ export default function Stats(text, alien) {
   console.log("d = " + d);
   const rip = 100 - d;
 
-  // const [rip, setRip] = useState(0);
-  // if (d > 100) {
-  //   setRip(0);
-  // } else {
-  //   setRip(100 - d);
-  // }
   console.log(text, date, year, month, typeof date, extraDate, rip);
 
   const Container = styled.div`
@@ -50,8 +32,38 @@ export default function Stats(text, alien) {
     margin: 2%;
   `;
 
-  const ExtraStats = styled.div`
-    width: ${rip}%;
+  const [food, setFood] = useState(100);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setFood((prevNums) => prevNums - 1);
+    }, 360000);
+
+    return () => {
+      clearInterval(intervalId); // Cleanup the interval on component unmount
+    };
+  }, []);
+
+  const [drink, setDrink] = useState(100);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setDrink((prevNums) => prevNums - 1);
+    }, 360000);
+
+    return () => {
+      clearInterval(intervalId); // Cleanup the interval on component unmount
+    };
+  }, []);
+
+  const FoodStats = styled.div`
+    width: ${food}%;
+    background-color: #04aa6d;
+    font-size: small;
+  `;
+
+  const DrinkStats = styled.div`
+    width: ${drink}%;
     background-color: #04aa6d;
     font-size: small;
   `;
@@ -59,11 +71,11 @@ export default function Stats(text, alien) {
   return (
     <>
       <Container>
-        <ExtraStats> Food status</ExtraStats>
+        <FoodStats> Food status</FoodStats>
       </Container>
 
       <Container>
-        <ExtraStats> Hydration status</ExtraStats>
+        <DrinkStats> Hydration status</DrinkStats>
       </Container>
     </>
   );
