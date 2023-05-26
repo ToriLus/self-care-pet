@@ -18,12 +18,21 @@ export default function Button(text, actionImage) {
 
   return (
     <>
-      <button onClick={handleButtonClick}>{inside}</button>
       {isImageVisible && (
         <div className="alert-container">
-          <Image src={src} width={50} height={50} alt="pic" />
+          <Image
+            className="eating-image"
+            src={src}
+            width={50}
+            height={50}
+            alt="pic"
+          />
         </div>
       )}
+      <button onClick={handleButtonClick}>
+        {" "}
+        <Image height={50} width={50} src={src} alt={`${inside}`} />
+      </button>
     </>
   );
 }
