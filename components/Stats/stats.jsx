@@ -3,13 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import styled, { keyframes, css } from "styled-components";
 
 export default function Stats(text, alien) {
-  const Container = styled.div`
-    width: 100%; /* Full width */
-    background-color: #ddd; /* Grey background */
-    margin: 2%;
-    border-radius: 25px;
-  `;
-
   const [food, setFood] = useState(100);
 
   useEffect(() => {
@@ -54,13 +47,13 @@ export default function Stats(text, alien) {
 
   return (
     <>
-      <Container>
-        <FoodStats>{`   ${drink}%`}</FoodStats>
-      </Container>
+      <div className="stats-container">
+        <FoodStats>{`${food}%`}</FoodStats>
+      </div>
 
-      <Container>
-        <DrinkStats> {`   ${food}%`}</DrinkStats>
-      </Container>
+      <div className="stats-container">
+        <DrinkStats> {`${drink}%`}</DrinkStats>
+      </div>
     </>
   );
 }
