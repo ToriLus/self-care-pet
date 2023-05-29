@@ -1,8 +1,11 @@
 "use client";
-import { useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
+import { ChromePicker } from "react-color";
 
 export default function Canvas() {
   const canvasRef = useRef(null);
+
+  const [color, setColor] = useState("#000");
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -10,7 +13,9 @@ export default function Canvas() {
 
     // Load the image
     const image = new Image();
-    image.src = "/gible.png";
+    image.src = "/separate_layers/rp_torso.png";
+    const secondImage = new Image();
+    secondImage.src = "/separate_layers/rp_tail.png";
 
     // Draw the image on the canvas once it's loaded
     image.onload = () => {
@@ -22,6 +27,7 @@ export default function Canvas() {
       const desiredHeight = (desiredWidth / image.width) * image.height;
 
       // Draw the image on the canvas with the desired dimensions
+      context.drawImage(secondImage, 0, 0, desiredWidth, desiredHeight);
       context.drawImage(image, 0, 0, desiredWidth, desiredHeight);
     };
 
@@ -30,5 +36,10 @@ export default function Canvas() {
     };
   }, []);
 
-  return <canvas ref={canvasRef} height={"600px"} width={"600px"} />;
+  return (
+    <div>
+      <ChromePicker color={color} onChange={(e) => setColor(e.hex)} />
+      <canvas ref={canvasRef} height={"600px"} width={"600px"} />
+    </div>
+  );
 }

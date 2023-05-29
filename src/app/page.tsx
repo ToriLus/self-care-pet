@@ -10,14 +10,7 @@ export default function Home() {
     <body>
       <main className={styles.main}>
         <div className={styles.description}>
-          <PetImage />
-          <Stats />
-          <div className={"random-name"}>
-            <Button text={"drink"} actionImage={"water"} />
-            <Button text={"eat"} actionImage={"food"} />
-            <Button text={"eat"} actionImage={"food"} />
-            <Button text={"eat"} actionImage={"food"} />
-          </div>
+          <Canvas />
         </div>
 
         <div className={styles.center}></div>
