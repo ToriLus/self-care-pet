@@ -83,18 +83,13 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-}
-
-body {
   color: rgb(var(--foreground-rgb));
   background-color: violet;
   background-repeat: no-repeat;
   background-size: contain;
-}
-
-body {
   display: flex;
   flex-direction: row;
+  border: solid red 2px;
 }
 
 a {
@@ -116,22 +111,22 @@ canvas {
   border: 2px solid black;
 }
 
-button {
+/* button {
   margin: 2px;
   border: white;
   padding: 1%;
-  background: #ffffff;
+  background: #e6dddd;
   border-radius: 20px;
   width: 20%;
-
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
 main {
-  background-color: #d2d7f0;
-  width: 100%;
+  background-color: #1a2f9b;
+  max-width: 100%;
+  min-width: 100vw;
 }
 
 .stats-container {
@@ -165,4 +160,28 @@ main {
   bottom: 70%;
   left: 100px;
   font-size: small;
+}
+
+.imageContainer {
+  position: relative;
+  width: 600px;
+  max-width: 400px;
+  border: 2px green solid;
+}
+
+.animalParts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.image-container {
+  display: inline-block; /* or any other suitable display property */
+}
+
+.image-container img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
