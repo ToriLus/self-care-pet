@@ -218,3 +218,7 @@ canvas {
 .rightPawCol {
   fill: yellow;
 }
+
+.colorPicker {
+  visibility: hidden;
+}

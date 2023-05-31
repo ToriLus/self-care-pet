@@ -1,9 +1,10 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { ChromePicker } from "react-color";
+import { ChromePicker, BlockPicker, SketchPicker } from "react-color";
 import { ReactSVG } from "react-svg";
 
 export default function Canvas() {
+  const [color, setColor] = useState("#000");
   const imagesArray = [
     "/vectorised/tail_base.svg",
 
@@ -53,6 +54,22 @@ export default function Canvas() {
     "/separate_layers/eyes.png",
   ];
 
+  const classArray = [
+    'class="earsHalfBrown"',
+    'class="earsHalfWhite"',
+    'class="headCol"',
+    'class="headWhite"',
+    'class="leftFoot"',
+    'class="leftHand"',
+    'class="leftPaw"',
+    'class="rightFoot"',
+    'class="rightHand"',
+    'class="rightPaw"',
+    'class="tailBase"',
+    'class="tailStripes"',
+    'class="torsoCol"',
+    'class="torsoWhite"',
+  ];
   useEffect(() => {
     // Load the image
 
@@ -62,16 +79,20 @@ export default function Canvas() {
     });
   });
 
-  function changeColor() {}
+  function changeColor() {
+    return "";
+  }
 
   return (
     <>
       <div className="animalContainer">
         {imagesArray.map((source) => {
           if (source.endsWith(".svg")) {
-            return <ReactSVG src={source} className="animalParts" />;
+            return (
+              <ReactSVG key={source} src={source} className="animalParts" />
+            );
           } else {
-            return <img src={source} className="animalParts" />;
+            return <img key={source} src={source} className="animalParts" />;
           }
         })}
       </div>
@@ -91,6 +112,11 @@ export default function Canvas() {
           } else return;
         })}
       </div>
+      <SketchPicker
+        className="colorPicker"
+        color={color}
+        onChange={(e) => setColor(e.hex)}
+      />
     </>
   );
 }
