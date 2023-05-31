@@ -84,12 +84,11 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   color: rgb(var(--foreground-rgb));
-  background-color: violet;
+  background-color: rgb(191, 216, 248);
   background-repeat: no-repeat;
   background-size: contain;
   display: flex;
   flex-direction: row;
-  border: solid red 2px;
 }
 
 a {
@@ -122,12 +121,6 @@ canvas {
   justify-content: center;
   align-items: center;
 } */
-
-main {
-  background-color: #1a2f9b;
-  max-width: 100%;
-  min-width: 100vw;
-}
 
 .stats-container {
   width: 100%; /* Full width */
@@ -175,13 +168,53 @@ main {
   left: 0;
   width: 100%;
 }
-
-.image-container {
+.animalContainer {
   display: inline-block; /* or any other suitable display property */
 }
 
-.image-container img {
+.animalContainer img {
   display: block;
   width: 100%;
   height: auto;
+}
+
+.animalContainer svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.buttonContainer {
+  position: fixed;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20%;
+  bottom: 10%;
+  right: 0;
+  margin: 2%;
+  padding: 2%;
+}
+
+.animalButton {
+  color: black;
+  height: 50px;
+  width: 25%;
+  padding: 5px;
+  background-color: white;
+}
+
+.animalButtonPicture {
+  height: 100%;
+  width: 100%;
+}
+
+#path123-10 {
+  fill: #38c238;
+}
+
+#path36-5 {
+  fill: blue;
+}
+
+.rightPawCol {
+  fill: yellow;
 }

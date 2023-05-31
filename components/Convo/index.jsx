@@ -1,12 +1,9 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { ChromePicker } from "react-color";
+import { ReactSVG } from "react-svg";
 
 export default function Canvas() {
-  const canvasRef = useRef(null);
-
-  const [color, setColor] = useState("#000");
-
   const imagesArray = [
     "/vectorised/tail_base.svg",
 
@@ -65,11 +62,54 @@ export default function Canvas() {
     });
   });
 
+  function changeColor() {}
+
   return (
-    <div className="image-container">
-      {imagesArray.map((source) => {
-        return <img src={source} className="animalParts" />;
-      })}
-    </div>
+    <>
+      <div className="animalContainer">
+        {imagesArray.map((source) => {
+          if (source.endsWith(".svg")) {
+            return <ReactSVG src={source} className="animalParts" />;
+          } else {
+            return <img src={source} className="animalParts" />;
+          }
+        })}
+      </div>
+      <div className="buttonContainer">
+        {imagesArray.map((source) => {
+          if (source.endsWith(".svg")) {
+            return (
+              <button key={source} className="animalButton">
+                <img
+                  alt="body part of the animal"
+                  key={source}
+                  src={source}
+                  className="animalButtonPicture"
+                />
+              </button>
+            );
+          } else return;
+        })}
+      </div>
+    </>
   );
 }
+
+/*
+
+class="earsHalfBrown"
+class="earsHalfWhite" 
+class="headCol"
+class="headWhite"
+class="leftFoot"
+class="leftHand"
+class="leftPaw"
+class="rightFoot"
+class="rightHand"
+class="rightPaw"
+class="tailBase"
+class="tailStripes"
+class="torsoCol"
+class="torsoWhite"
+
+*/
