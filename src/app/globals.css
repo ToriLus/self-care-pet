@@ -205,9 +205,9 @@ canvas {
 .animalButton {
   color: black;
   border-radius: 12px;
-  height: 10%;
-  width: 10%;
+  padding: 5px;
   margin: 5px;
+  height: 25px;
   background-color: white;
   border: none;
   transition-duration: 0.01s;
@@ -215,10 +215,6 @@ canvas {
 
 .animalButton:active {
   background: rgb(143, 210, 241);
-}
-.animalButtonPicture {
-  height: 100%;
-  width: 100%;
 }
 
 .pickerContainer {
@@ -229,8 +225,4 @@ canvas {
 main {
   border: solid blue 6px;
   max-width: 500px;
-}
-
-.tailBase {
-  fill: rgb(199, 26, 26);
 }

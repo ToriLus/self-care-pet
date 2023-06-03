@@ -1,11 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import {
-  CompactPicker,
-  BlockPicker,
-  SketchPicker,
-  SliderPicker,
-} from "react-color";
+import { CompactPicker } from "react-color";
 import { ReactSVG } from "react-svg";
 
 export default function Canvas() {
@@ -55,20 +50,20 @@ export default function Canvas() {
   ];
 
   const classArray = [
-    'class="earsHalfBrown"',
-    'class="earsHalfWhite"',
-    'class="headCol"',
-    'class="headWhite"',
-    'class="leftFoot"',
-    'class="leftHand"',
-    'class="leftPaw"',
-    'class="rightFoot"',
-    'class="rightHand"',
-    'class="rightPaw"',
-    'class="tailBase"',
-    'class="tailStripes"',
-    'class="torsoCol"',
-    'class="torsoWhite"',
+    { class: ".earsHalfBrown", showing: "inner ear" },
+    { class: ".earsHalfWhite", showing: "outer ear" },
+    { class: ".headCol", showing: "head" },
+    { class: ".headWhite", showing: "head marks" },
+    { class: ".leftFoot", showing: "left foot" },
+    { class: ".leftHand", showing: "left hand" },
+    { class: ".leftPaw", showing: "left paw" },
+    { class: ".rightFoot", showing: "right foot" },
+    { class: ".rightHand", showing: "right hand" },
+    { class: ".rightPaw", showing: "right paw" },
+    { class: ".tailBase", showing: "tail base" },
+    { class: ".tailStripes", showing: "tail stripes" },
+    { class: ".torsoCol", showing: "torso" },
+    { class: ".torsoWhite", showing: "belly" },
   ];
   useEffect(() => {
     imagesArray.map((source) => {
@@ -79,17 +74,27 @@ export default function Canvas() {
 
   const colorPickerRef = useRef(null);
   const [isVisible, setIsVisible] = useState(true);
+  const [parameter, setParameter] = useState(".torsoWhite");
 
-  const toggleVisibility = () => {
+  const toggleVisibility = (parameter) => {
     setIsVisible(!isVisible);
+    setParameter(parameter);
   };
 
-  console.log(classArray[0], color);
+  console.log("parameter:", parameter);
 
-  const svgElement = document.querySelector(".tailBase");
-  if (svgElement) {
-    svgElement.style.fill = color;
-  }
+  const result = classArray.map((word) => word);
+
+  console.log(classArray[0], color, result);
+
+  const onChange = () => {
+    (e, parameter) => {
+      setColor(e.hex);
+      const svgElement = document.querySelector(parameter);
+      console.log("onchange funct:", parameter);
+      svgElement.style.fill = color;
+    };
+  };
 
   return (
     <div className="generalContainer">
@@ -105,46 +110,32 @@ export default function Canvas() {
         })}
       </div>
       <div className="buttonContainer">
-        {classArray.map((source) => {
+        {classArray.map((source, index) => {
           return (
             <button
               key={source}
               className="animalButton"
-              onClick={toggleVisibility}
-            >{`${source}`}</button>
+              onClick={() => toggleVisibility(source.class)}
+            >
+              {source.showing}
+            </button>
           );
         })}
       </div>
-      <div class="pickerContainer">
-        {isVisible && (
-          <CompactPicker
-            ref={colorPickerRef}
-            onChange={(e) => {
-              setColor(e.hex);
+      <div className="pickerContainer">
+        {/* {isVisible && ( */}
+        <CompactPicker
+          ref={colorPickerRef}
+          onChange={(e) => {
+            setColor(e.hex);
+            const svgElements = document.querySelectorAll(parameter);
+            console.log("onchange funct:", parameter);
+            svgElements.forEach((svgElement) => {
               svgElement.style.fill = color;
-            }}
-          />
-        )}
+            });
+          }}
+        />
       </div>
     </div>
   );
 }
-
-/*
-
-class="earsHalfBrown"
-class="earsHalfWhite" 
-class="headCol"
-class="headWhite"
-class="leftFoot"
-class="leftHand"
-class="leftPaw"
-class="rightFoot"
-class="rightHand"
-class="rightPaw"
-class="tailBase"
-class="tailStripes"
-class="torsoCol"
-class="torsoWhite"
-
-*/
