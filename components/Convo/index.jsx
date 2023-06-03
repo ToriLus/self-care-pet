@@ -1,6 +1,11 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { ChromePicker, BlockPicker, SketchPicker } from "react-color";
+import {
+  CompactPicker,
+  BlockPicker,
+  SketchPicker,
+  SliderPicker,
+} from "react-color";
 import { ReactSVG } from "react-svg";
 
 export default function Canvas() {
@@ -10,48 +15,43 @@ export default function Canvas() {
 
     "/vectorised/tail_stripes.svg",
 
-    "/vectorised/left_foot.svg",
-    "/vectorised/right_foot.svg",
     "/vectorised/ears_half_white.svg",
     "/vectorised/ears_half_brown.svg",
 
-    "/separate_layers/ears_half_outline.png",
     "/separate_layers/ears_half_shadow.png",
 
-    "/separate_layers/left_foot_outline.png",
-    "/separate_layers/left_foot_shadow.png",
-
-    "/separate_layers/right_foot_outline.png",
-    "/separate_layers/right_foot_shadow.png",
-    "/separate_layers/tail_outline.png",
     "/separate_layers/tail_shadow.png",
     //right hand
 
     "/vectorised/right_hand.svg",
     "/vectorised/right_paw.svg",
     "/separate_layers/right_hand_shadow.png",
-    "/separate_layers/right_hand_outline.png",
+
     //left hand
 
     "/vectorised/left_hand.svg",
     "/vectorised/left_paw.svg",
 
     "/separate_layers/left_hand_shadow.png",
-    "/separate_layers/left_hand_outline.png",
+
     //torso
     "/vectorised/torso_col.svg",
     "/vectorised/torso_white.svg",
     "/separate_layers/torso_shadow.png",
-    "/separate_layers/torso_outline.png",
 
     //head and mouth
     "/vectorised/head_col.svg",
     "/vectorised/head_white.svg",
-    "/separate_layers/head_outline.png",
+
     "/separate_layers/head_shadow.png",
     "/separate_layers/mouth.png",
     "/separate_layers/nose.png",
     "/separate_layers/eyes.png",
+    "/vectorised/left_foot.svg",
+    "/vectorised/right_foot.svg",
+    "vectorised/outline3.svg",
+    "/separate_layers/left_foot_shadow.png",
+    "/separate_layers/right_foot_shadow.png",
   ];
 
   const classArray = [
@@ -71,20 +71,28 @@ export default function Canvas() {
     'class="torsoWhite"',
   ];
   useEffect(() => {
-    // Load the image
-
     imagesArray.map((source) => {
       const image = new Image();
       image.src = source;
     });
   });
 
-  function changeColor() {
-    return "";
+  const colorPickerRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(true);
+
+  const toggleVisibility = () => {
+    setIsVisible(!isVisible);
+  };
+
+  console.log(classArray[0], color);
+
+  const svgElement = document.querySelector(".tailBase");
+  if (svgElement) {
+    svgElement.style.fill = color;
   }
 
   return (
-    <>
+    <div className="generalContainer">
       <div className="animalContainer">
         {imagesArray.map((source) => {
           if (source.endsWith(".svg")) {
@@ -97,27 +105,28 @@ export default function Canvas() {
         })}
       </div>
       <div className="buttonContainer">
-        {imagesArray.map((source) => {
-          if (source.endsWith(".svg")) {
-            return (
-              <button key={source} className="animalButton">
-                <img
-                  alt="body part of the animal"
-                  key={source}
-                  src={source}
-                  className="animalButtonPicture"
-                />
-              </button>
-            );
-          } else return;
+        {classArray.map((source) => {
+          return (
+            <button
+              key={source}
+              className="animalButton"
+              onClick={toggleVisibility}
+            >{`${source}`}</button>
+          );
         })}
       </div>
-      <SketchPicker
-        className="colorPicker"
-        color={color}
-        onChange={(e) => setColor(e.hex)}
-      />
-    </>
+      <div class="pickerContainer">
+        {isVisible && (
+          <CompactPicker
+            ref={colorPickerRef}
+            onChange={(e) => {
+              setColor(e.hex);
+              svgElement.style.fill = color;
+            }}
+          />
+        )}
+      </div>
+    </div>
   );
 }
 

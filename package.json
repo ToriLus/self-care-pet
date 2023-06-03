@@ -23,5 +23,8 @@
     "react-svg": "^16.1.14",
     "styled-components": "^5.3.10",
     "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.2"
   }
 }

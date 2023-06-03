@@ -5,10 +5,8 @@ import Button from "../../components/Button";
 export default function Home() {
   return (
     <body>
-      <main className={styles.main}>
-        <div className={styles.description}>
-          <Canvas />
-        </div>
+      <main>
+        <Canvas />
       </main>
     </body>
   );

@@ -162,63 +162,75 @@ canvas {
   border: 2px green solid;
 }
 
-.animalParts {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+/*this is for the customization*/
+
+.generalContainer {
+  height: 100vh;
+
+  position: relative;
 }
+
 .animalContainer {
-  display: inline-block; /* or any other suitable display property */
+  height: 50%;
+  width: 70%;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.animalParts {
+  position: fixed;
+  top: 2%;
+  left: 2%;
+  width: 100%;
 }
 
 .animalContainer img {
-  display: block;
-  width: 100%;
-  height: auto;
+  max-height: 500px; /* Add height auto for responsive images */
+  max-width: 500px;
+  object-fit: contain; /* Maintain aspect ratio and fit within the container */
 }
 
 .animalContainer svg {
-  display: block;
-  width: 100%;
-  height: auto;
+  max-width: 500px;
+  max-height: 500px;
 }
+
 .buttonContainer {
-  position: fixed;
+  margin-top: 50px;
   display: flex;
+  justify-content: space-around;
   flex-wrap: wrap;
-  margin-top: 20%;
-  bottom: 10%;
-  right: 0;
-  margin: 2%;
-  padding: 2%;
 }
 
 .animalButton {
   color: black;
-  height: 50px;
-  width: 25%;
-  padding: 5px;
+  border-radius: 12px;
+  height: 10%;
+  width: 10%;
+  margin: 5px;
   background-color: white;
+  border: none;
+  transition-duration: 0.01s;
 }
 
+.animalButton:active {
+  background: rgb(143, 210, 241);
+}
 .animalButtonPicture {
   height: 100%;
   width: 100%;
 }
 
-#path123-10 {
-  fill: #38c238;
+.pickerContainer {
+  margin-top: 20px;
+  margin-left: 20%;
 }
 
-#path36-5 {
-  fill: blue;
+main {
+  border: solid blue 6px;
+  max-width: 500px;
 }
 
-.rightPawCol {
-  fill: yellow;
-}
-
-.colorPicker {
-  visibility: hidden;
+.tailBase {
+  fill: rgb(199, 26, 26);
 }
