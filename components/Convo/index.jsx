@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { CompactPicker } from "react-color";
 import { ReactSVG } from "react-svg";
 
+import useLocalStorageState from "use-local-storage-state";
+
 export default function Canvas() {
   const [color, setColor] = useState("#000");
   const imagesArray = [
@@ -75,25 +77,11 @@ export default function Canvas() {
   const colorPickerRef = useRef(null);
   const [isVisible, setIsVisible] = useState(true);
   const [parameter, setParameter] = useState(".torsoWhite");
+  const [pandaColors, setPandaColors] = useLocalStorageState([]);
 
   const toggleVisibility = (parameter) => {
     setIsVisible(!isVisible);
     setParameter(parameter);
-  };
-
-  console.log("parameter:", parameter);
-
-  const result = classArray.map((word) => word);
-
-  console.log(classArray[0], color, result);
-
-  const onChange = () => {
-    (e, parameter) => {
-      setColor(e.hex);
-      const svgElement = document.querySelector(parameter);
-      console.log("onchange funct:", parameter);
-      svgElement.style.fill = color;
-    };
   };
 
   return (
@@ -110,10 +98,10 @@ export default function Canvas() {
         })}
       </div>
       <div className="buttonContainer">
-        {classArray.map((source, index) => {
+        {classArray.map((source) => {
           return (
             <button
-              key={source}
+              key={source.class}
               className="animalButton"
               onClick={() => toggleVisibility(source.class)}
             >
@@ -123,15 +111,17 @@ export default function Canvas() {
         })}
       </div>
       <div className="pickerContainer">
-        {/* {isVisible && ( */}
         <CompactPicker
           ref={colorPickerRef}
           onChange={(e) => {
+            const newColor = e.hex;
             setColor(e.hex);
             const svgElements = document.querySelectorAll(parameter);
-            console.log("onchange funct:", parameter);
+            console.log(newColor, color);
             svgElements.forEach((svgElement) => {
-              svgElement.style.fill = color;
+              svgElement.style.fill = newColor;
+              setPandaColors(svgElement.style.fill);
+              console.log(pandaColors);
             });
           }}
         />

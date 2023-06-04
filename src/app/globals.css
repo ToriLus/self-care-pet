@@ -1,9 +1,12 @@
+@import "./fonts.css";
+
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
     "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
     "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+  --font-family: indieFlower;
 
   --foreground-rgb: rgb(223, 58, 58);
   --background-start-rgb: rgb(199, 26, 26);
@@ -105,25 +108,21 @@ a {
 img {
   display: flex;
 }
-
-canvas {
-  border: 2px solid black;
+.foodButtonContainer {
+  width: 50%;
+  position: flex;
 }
 
-/* button {
-  margin: 2px;
-  border: white;
-  padding: 1%;
-  background: #e6dddd;
-  border-radius: 20px;
-  width: 20%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
+.foodButton {
+  color: black;
+  border-radius: 12px;
+  margin: 5px;
+  background-color: white;
+  border: none;
+}
 
 .stats-container {
-  width: 100%; /* Full width */
+  width: 50%; /* Full width */
   background-color: #ddd; /* Grey background */
   margin: 2%;
   border-radius: 25px;
@@ -152,7 +151,7 @@ canvas {
   position: absolute;
   bottom: 70%;
   left: 100px;
-  font-size: small;
+  font-family: indieFlower;
 }
 
 .imageContainer {
@@ -166,7 +165,6 @@ canvas {
 
 .generalContainer {
   height: 100vh;
-
   position: relative;
 }
 
@@ -205,12 +203,16 @@ canvas {
 .animalButton {
   color: black;
   border-radius: 12px;
-  padding: 5px;
+  padding: 10px;
   margin: 5px;
-  height: 25px;
+  height: 40px;
   background-color: white;
   border: none;
   transition-duration: 0.01s;
+  font-family: indieFlower;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
 }
 
 .animalButton:active {
@@ -225,4 +227,5 @@ canvas {
 main {
   border: solid blue 6px;
   max-width: 500px;
+  width: 500px;
 }
