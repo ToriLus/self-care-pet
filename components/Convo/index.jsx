@@ -77,12 +77,16 @@ export default function Canvas() {
   const colorPickerRef = useRef(null);
   const [isVisible, setIsVisible] = useState(true);
   const [parameter, setParameter] = useState(".torsoWhite");
-  const [pandaColors, setPandaColors] = useLocalStorageState([]);
+  const [pandaColors, setPandaColors] = useLocalStorageState("panda-colors", {
+    defaultValue: {},
+  });
 
   const toggleVisibility = (parameter) => {
     setIsVisible(!isVisible);
     setParameter(parameter);
   };
+
+  localStorage.getItem("panda-colors");
 
   return (
     <div className="generalContainer">
@@ -120,7 +124,11 @@ export default function Canvas() {
             console.log(newColor, color);
             svgElements.forEach((svgElement) => {
               svgElement.style.fill = newColor;
-              setPandaColors(svgElement.style.fill);
+              const colors = pandaColors;
+              colors[svgElement.className.baseVal] = newColor;
+              setPandaColors(colors);
+              console.log(svgElement.className.baseVal, newColor);
+
               console.log(pandaColors);
             });
           }}
