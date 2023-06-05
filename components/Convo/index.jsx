@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { CompactPicker } from "react-color";
 import { ReactSVG } from "react-svg";
-import useLocalStorage from "react-use-localstorage";
+const useLocalStorage = require("react-use-localstorage").default;
 import ImageCustom from "../ImageCustom";
 
 import useLocalStorageState from "use-local-storage-state";

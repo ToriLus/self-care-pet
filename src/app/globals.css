@@ -117,12 +117,15 @@ img {
   color: black;
   border-radius: 12px;
   margin: 5px;
+  padding: 5px;
+  height: 100px;
+  width: 100px;
   background-color: white;
   border: none;
 }
 
 .stats-container {
-  width: 50%; /* Full width */
+  width: 400px; /* Full width */
   background-color: #ddd; /* Grey background */
   margin: 2%;
   border-radius: 25px;
@@ -142,14 +145,16 @@ img {
 
 .eating-image {
   position: absolute;
-  top: 50%;
+  top: 20%;
   left: 200px;
+  height: 100px;
+  width: auto;
 }
 
 .poping-text {
   color: rgb(0, 0, 0);
   position: absolute;
-  bottom: 70%;
+  top: 4px;
   left: 100px;
   font-family: indieFlower;
 }

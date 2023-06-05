@@ -52,7 +52,7 @@ export default function Stats(text, alien) {
       </div>
 
       <div className="stats-container">
-        <DrinkStats> {`${drink}%`}</DrinkStats>
+        <div class="drinkStats"> {`${drink}%`}</div>
       </div>
     </>
   );

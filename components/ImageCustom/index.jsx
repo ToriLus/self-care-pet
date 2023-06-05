@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { CompactPicker } from "react-color";
 import { ReactSVG } from "react-svg";
 
+import useLocalStorageState from "use-local-storage-state";
+
 export default function ImageCustom() {
   const imagesArray = [
     "/vectorised/tail_base.svg",
