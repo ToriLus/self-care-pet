@@ -2,6 +2,8 @@
 import { useEffect, useRef, useState } from "react";
 import { CompactPicker } from "react-color";
 import { ReactSVG } from "react-svg";
+import useLocalStorage from "react-use-localstorage";
+import ImageCustom from "../ImageCustom";
 
 import useLocalStorageState from "use-local-storage-state";
 
@@ -67,40 +69,21 @@ export default function Canvas() {
     { class: ".torsoCol", showing: "torso" },
     { class: ".torsoWhite", showing: "belly" },
   ];
-  useEffect(() => {
-    imagesArray.map((source) => {
-      const image = new Image();
-      image.src = source;
-    });
-  });
 
   const colorPickerRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(true);
+
   const [parameter, setParameter] = useState(".torsoWhite");
   const [pandaColors, setPandaColors] = useLocalStorageState("panda-colors", {
     defaultValue: {},
   });
 
   const toggleVisibility = (parameter) => {
-    setIsVisible(!isVisible);
     setParameter(parameter);
   };
-
-  localStorage.getItem("panda-colors");
-
+  const jsonPandaColors = JSON.parse(localStorage.getItem("panda-colors"));
   return (
     <div className="generalContainer">
-      <div className="animalContainer">
-        {imagesArray.map((source) => {
-          if (source.endsWith(".svg")) {
-            return (
-              <ReactSVG key={source} src={source} className="animalParts" />
-            );
-          } else {
-            return <img key={source} src={source} className="animalParts" />;
-          }
-        })}
-      </div>
+      <ImageCustom />
       <div className="buttonContainer">
         {classArray.map((source) => {
           return (
@@ -117,19 +100,30 @@ export default function Canvas() {
       <div className="pickerContainer">
         <CompactPicker
           ref={colorPickerRef}
+          onload={Object.keys(jsonPandaColors).forEach((key) => {
+            const savedElements = document.querySelectorAll(`.${key}`);
+            savedElements.forEach((element) => {
+              element.style.fill = jsonPandaColors[key];
+              console.log(
+                "this is key",
+                jsonPandaColors[key],
+                "oh my god:",
+                element.style
+              );
+            });
+
+            console.log(key, parameter);
+          })}
           onChange={(e) => {
             const newColor = e.hex;
             setColor(e.hex);
             const svgElements = document.querySelectorAll(parameter);
-            console.log(newColor, color);
+
             svgElements.forEach((svgElement) => {
               svgElement.style.fill = newColor;
-              const colors = pandaColors;
+              const colors = { ...pandaColors };
               colors[svgElement.className.baseVal] = newColor;
               setPandaColors(colors);
-              console.log(svgElement.className.baseVal, newColor);
-
-              console.log(pandaColors);
             });
           }}
         />
