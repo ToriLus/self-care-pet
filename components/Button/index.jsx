@@ -69,15 +69,17 @@ export default function Button(text, actionImage) {
           <h2 className="poping-text">{`${eatText}`}</h2>
         </div>
       )}
-      <button onClick={handleButtonClick}>
-        <Image
-          height={20}
-          width={50}
-          className={"food-butt-img"}
-          src={src}
-          alt={`${inside}`}
-        />
-      </button>
+      <div className="foodButtonContainer">
+        <button onClick={handleButtonClick} className="foodButton">
+          <Image
+            height={20}
+            width={50}
+            className={"food-butt-img"}
+            src={src}
+            alt={`${inside}`}
+          />
+        </button>
+      </div>
     </>
   );
 }
