@@ -2,11 +2,17 @@
 import { useEffect, useRef, useState } from "react";
 import styled, { keyframes, css } from "styled-components";
 
-export default function Stats(text, alien) {
+export default function Stats(giveDrink, giveFood) {
   const [food, setFood] = useState(100);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
+      if (giveDrink) {
+        setDrink(drink + 20);
+      }
+      if (giveFood) {
+        setFood(food + 20);
+      }
       setFood((prevNums) => prevNums - 1);
     }, 360000);
 
@@ -30,7 +36,7 @@ export default function Stats(text, alien) {
   const FoodStats = styled.div`
     width: ${food}%;
     background-color: #ffca42;
-    font-size: small;
+
     border-radius: 25px;
     text-align: right;
     padding: 4px;
@@ -39,7 +45,7 @@ export default function Stats(text, alien) {
   const DrinkStats = styled.div`
     width: ${drink}%;
     background-color: #00d1ff;
-    font-size: small;
+
     border-radius: 25px;
     text-align: right;
     padding: 4px;
@@ -52,7 +58,7 @@ export default function Stats(text, alien) {
       </div>
 
       <div className="stats-container">
-        <div class="drinkStats"> {`${drink}%`}</div>
+        <DrinkStats> {`${drink}%`}</DrinkStats>
       </div>
     </>
   );
