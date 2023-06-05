@@ -1,10 +1,10 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { CompactPicker } from "react-color";
+import { ReactSVG } from "react-svg";
 
-import ImageCustom from "../ImageCustom";
-
-import useLocalStorageState from "use-local-storage-state";
+import ImageCustom from "../../components/ImageCustom";
+import useLocalStorageState from "react-use-localstorage";
 
 export default function Canvas() {
   const [color, setColor] = useState("#000");

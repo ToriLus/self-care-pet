@@ -6,16 +6,25 @@ import Background from "../../components/Background";
 import Stats from "../../components/Stats/stats";
 import Canvas from "../../components/Convo";
 import ImageCustom from "../../components/ImageCustom";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import SaveButton from "../../components/SaveButton";
-import Home from "@/app/page";
+import Link from "next/link";
 
-export default function HomeTwo() {
+export default function Home() {
   return (
     <body>
       <main>
-        <Canvas />
-        <SaveButton />
+        <div className="generalContainer">
+          <ImageCustom />
+          <Stats />
+          <div className={"random-name"}>
+            <Button text={"drink"} actionImage={"water"} />
+            <Button text={"eat"} actionImage={"food"} />
+            <Button text={"eat"} actionImage={"food"} />
+            <Button text={"eat"} actionImage={"food"} />
+          </div>
+        </div>
+        <Link href="/customization">
+          <button>go to custom</button>
+        </Link>
       </main>
     </body>
   );
