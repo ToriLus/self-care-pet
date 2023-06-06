@@ -104,15 +104,7 @@ export default function Canvas() {
             const savedElements = document.querySelectorAll(`.${key}`);
             savedElements.forEach((element) => {
               element.style.fill = jsonPandaColors[key];
-              console.log(
-                "this is key",
-                jsonPandaColors[key],
-                "oh my god:",
-                element.style
-              );
             });
-
-            console.log(key, parameter);
           })}
           onChange={(e) => {
             const newColor = e.hex;

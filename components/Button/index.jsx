@@ -13,36 +13,35 @@ export default function Button(text, actionImage) {
       "Oh gods! is this a carrot again? If I'm eating healthy, you need to do it, too.",
       "Bon Apetit!",
       "Did you know that brain works better when fed?",
-      "something something something",
-      "Smart text",
-      "very smart text",
-      "yet another",
-      "hit me baby one more time",
+      "Let's dig in!",
+      "What a scrumptious meal. What did you have for breakfast?",
+      "Aren't you hungry, too?",
+      "Did you know that pandas eat up to 40kg a day? That's slightly more then humans.",
+      "Grab a snack!",
     ],
     drink: [
-      "That's so tasty. What are you having for dinner?",
-      "Did you remember to eat today?",
-      "That's delicious! You should also get a snack!",
-      "Oh gods! is this a carrot again? If I'm eating healthy, you need to do it, too.",
+      "Drinking water increases your energy! Go grab a glass!",
+      "Flush out your toxins, too!",
+      "Drinking only coffee is not sustainable, yanno?",
+      "It's summer. Grab something to drink.",
       "Bon Apetit!",
-      "Did you know that brain works better when fed?",
-      "something something something",
-      "Smart text",
-      "very smart text",
-      "yet another",
-      "hit me baby one more time",
+      "Did you know that brain works better when hydrated properly?",
+      "You take care of my kidneys, but take care of yours, too.",
+      "water is the true adult drink",
+      "Thank you! You also grab a drink.",
+      "Yet another",
+      "One more for both of us!",
     ],
   };
 
   let x = Math.round(Math.random() * 10);
 
-  console.log(src, x);
   const handleButtonClick = () => {
     setIsImageVisible(true);
 
     setTimeout(() => {
       setIsImageVisible(false);
-    }, 3000);
+    }, 4000);
 
     if (src == "/food.png") {
       setEatText(textContainer.food[x]);

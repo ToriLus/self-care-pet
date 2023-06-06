@@ -36,18 +36,16 @@ export default function Stats(giveDrink, giveFood) {
   const FoodStats = styled.div`
     width: ${food}%;
     background-color: #ffca42;
-
     border-radius: 25px;
-    text-align: right;
+
     padding: 4px;
   `;
 
   const DrinkStats = styled.div`
     width: ${drink}%;
     background-color: #00d1ff;
-
     border-radius: 25px;
-    text-align: right;
+
     padding: 4px;
   `;
 

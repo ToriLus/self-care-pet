@@ -151,12 +151,27 @@ img {
   width: auto;
 }
 
+a button {
+  background-color: white;
+  padding: 10px;
+  border: none;
+  position: absolute;
+  bottom: 20%;
+  font-family: indieFlower;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
 .poping-text {
   color: rgb(0, 0, 0);
   position: absolute;
   top: 4px;
   left: 100px;
+  display: flex;
+  flex-wrap: wrap;
   font-family: indieFlower;
+  background-color: rgb(191, 216, 248);
 }
 
 .imageContainer {
@@ -182,7 +197,7 @@ img {
 
 .animalParts {
   position: fixed;
-  top: 2%;
+  top: 5%;
   left: 2%;
   width: 100%;
 }
@@ -230,7 +245,6 @@ img {
 }
 
 main {
-  border: solid blue 6px;
   max-width: 500px;
   width: 500px;
 }

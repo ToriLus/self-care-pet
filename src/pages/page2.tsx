@@ -15,8 +15,14 @@ import HandleButton from "../../hooks/handleButton";
 import { useEffect } from "react";
 
 export default function Home() {
+  let jsonPandaColors;
+
   useEffect(() => {
-    const jsonPandaColors = JSON.parse(localStorage.getItem("panda-colors"));
+    if (typeof localStorage !== "undefined") {
+      jsonPandaColors = JSON.parse(localStorage.getItem("panda-colors"));
+    } else {
+      jsonPandaColors = {}; // or any default value you prefer
+    }
     Object.keys(jsonPandaColors).forEach((key) => {
       const savedElements = document.querySelectorAll(`.${key}`);
       savedElements.forEach((element) => {
